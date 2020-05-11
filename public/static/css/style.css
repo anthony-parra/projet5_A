@@ -1,0 +1,126 @@
+@font-face {
+    font-family: 'Belligerent-Madness';
+    src: url('Belligerent-Madness.ttf.woff') format('woff'), url('Belligerent-Madness.ttf.svg#Belligerent-Madness') format('svg'), url('Belligerent-Madness.ttf.eot'), url('Belligerent-Madness.ttf.eot?#iefix') format('embedded-opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    margin: auto;
+}
+
+a {
+    text-decoration: none;
+}
+
+.color {
+    color: black;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 1px 1px 12px gray;
+}
+
+.logo {
+    margin-left: 20px;
+}
+
+figcaption {
+    text-align: center;
+    color: black;
+    margin: 20px 0px 30px 0px;
+}
+
+figure {
+    box-shadow: 1px 1px 12px gray;
+    border-radius: 5%;
+}
+
+.panier {
+    display: flex;
+    align-items: center;
+    margin-right: 40px;
+    color: #9a61dd;
+}
+
+h1,
+h2 {
+    text-align: center;
+    margin-bottom: 50px;
+    margin-top: 50px;
+    font-family: 'Belligerent-Madness';
+    font-weight: unset;
+}
+
+.paragraphe__index {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.photo__produit {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.photo__inside {
+    margin: 0px 35px;
+    box-shadow: 1px 1px 5px gray;
+    border-radius: 10%;
+    transform: scale(1);
+    transition: .6s;
+}
+
+.photo__inside:hover {
+    transform: scale(1.15);
+    transition: .6s;
+}
+
+.photo__personnalisation {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-evenly;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 1px 1px 12px gray;
+    padding: 10px;
+    width: 80%;
+}
+
+.photo__lenny_and_carl {
+    display: flex;
+    align-items: center;
+}
+
+.bouton {
+    text-align: center;
+    border: 1px double gray;
+    background-color: #f3e9f1;
+    width: 150px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px;
+    border-radius: 20px;
+    font-family: 'Belligerent-Madness';
+    transform: scale(1);
+    transition: .6s;
+    color: black;
+}
+
+.bouton:hover {
+    transform: scale(1.15);
+    transition: .6S;
+}
+
+.produit_panier {
+    display: flex;
+    flex-direction: column;
+}
+
+.ligne_nomenclature {
+    display: flex;
+    justify-content: space-evenly;
+    box-shadow: 1px 1px 12px gray;
+}

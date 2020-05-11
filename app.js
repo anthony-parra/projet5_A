@@ -26,12 +26,6 @@ app.use((req, res, next) => {
     next();
 });
 
-// Création du dossier public //
-
-app.use(express.static('public'));
-
-//
-
 app.use('/images', express.static(path.join(__dirname, 'images')));
 
 app.use(bodyParser.json());
@@ -39,5 +33,25 @@ app.use(bodyParser.json());
 app.use('/api/cameras', cameraRoutes);
 app.use('/api/teddies', teddyRoutes);
 app.use('/api/furniture', furnitureRoutes);
+
+// Création du dossier public 
+
+app.use("/static", express.static('./public/static/'));
+
+
+// Ajout chemin pour HTML 
+
+app.get('/', function(req, res) {
+    res.sendFile(path.join(_dirname + '.public/index.html'));
+});
+app.get('/', function(req, res) {
+    res.sendFile(path.join(_dirname + '.public/produit.html'));
+});
+app.get('/', function(req, res) {
+    res.sendFile(path.join(_dirname + '.public/commande.html'));
+});
+app.get('/', function(req, res) {
+    res.sendFile(path.join(_dirname + '.public/panier.html'));
+});
 
 module.exports = app;
