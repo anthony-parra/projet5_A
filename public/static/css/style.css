@@ -124,3 +124,8 @@ h2 {
     justify-content: space-evenly;
     box-shadow: 1px 1px 12px gray;
 }
+
+.ligne_tableau {
+    display: flex;
+    justify-content: space-evenly;
+}
