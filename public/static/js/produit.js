@@ -1,16 +1,12 @@
-const ajoutPanier = document.getElementById('addPanier');
+fetch(' http://localhost:3000/api/teddies')
+    .then(function(response) {
+        return response.json()
+    }).then(function(data) {
+        console.log(data)
+    });
 
-const parametre = {
-    nom: 'Lenny and Carl',
-    price: '5900€',
-    id: '5beaaa8f1c9d440000a57d95'
+const clickAdd = document.querySelector('button#addPanier');
+
+clickAdd.onclick = function() {
+    alert('Votre produit à bien été ajouté au panier !')
 };
-const titre = document.querySelector('h2');
-const ligne = document.querySelector('p.ligne');
-
-
-ajoutPanier.addEventListener("click", myFunction);
-
-function myFunction() {
-    ligne.innerHTML += "Hello World";
-}

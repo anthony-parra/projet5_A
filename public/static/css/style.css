@@ -94,8 +94,9 @@ h2 {
     align-items: center;
 }
 
-.bouton {
-    text-align: center;
+#addPanier {
+    display: flex;
+    justify-content: center;
     border: 1px double gray;
     background-color: #f3e9f1;
     width: 150px;
@@ -109,7 +110,7 @@ h2 {
     color: black;
 }
 
-.bouton:hover {
+#addPanier:hover {
     transform: scale(1.15);
     transition: .6S;
 }
@@ -128,4 +129,45 @@ h2 {
 .ligne_tableau {
     display: flex;
     justify-content: space-evenly;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    box-shadow: 1px 1px 12px gray;
+    margin: 0px 150px 150px 150px;
+}
+
+.nom__prenom {
+    display: flex;
+    justify-content: space-evenly;
+    text-align: center;
+}
+
+.adresse__ville {
+    text-align: center;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.adresse__mail--bouton {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.bouton__validation {
+    background-color: #f3e9f1;
+    padding: 10px;
+    font-size: 15px;
+    border-radius: 20px;
+    font-family: 'Belligerent-Madness';
+    transform: scale(1);
+    transition: .6s;
+    color: black;
+}
+
+.bouton__validation:hover {
+    transform: scale(1.15);
+    transition: .6s;
 }

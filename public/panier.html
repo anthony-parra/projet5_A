@@ -15,7 +15,7 @@
         <div class="panier"><a href="panier.html"><i class="fas fa-shopping-bag fa-2x"></i></a></div>
     </header>
 
-    <h1>Résumé des produits de votre panier</h1>
+    <h1>Résumé des produits de votre panier</h1><button id="bouton">ICI</button>
 
     <div class="produit_panier">
         <div class="ligne_nomenclature">
@@ -26,10 +26,44 @@
             <p><strong>Retirez votre produit</strong></p>
         </div>
         <div class="ligne_tableau">
-            <p class="ligne"></p>
+            <p id="ligne"></p>
         </div>
     </div>
-    <script src="static/js/produit.js"></script>
+    <form method="post" action="">
+        <h2>Formulaire de commande ! </h3>
+            <div class="nom__prenom">
+                <p>
+                    <label for="nom">Votre nom</label><br>
+                    <input type="text" name="nom" id="nom" required size="50px">
+                </p>
+                <p>
+                    <label for="prenom">Votre prénom</label><br>
+                    <input type="text" name="prenom" id="prenom" required size="50px">
+                </p>
+            </div>
+            <div class="adresse__ville">
+                <p>
+                    <label for="adresse">Votre adresse postale</label><br>
+                    <input type="text" name="adresse" id="adresse" required size="50px">
+                </p>
+                <p>
+                    <label for="ville">Votre ville</label><br>
+                    <input type="text" name="ville" id="ville" required size="50px">
+                </p>
+            </div>
+            <div class="adresse__mail--bouton">
+                <p>
+                    <label for="mail">Votre adresse mail</label><br>
+                    <input type="text" name="mail" id="mail" required size="50px">
+                </p>
+                <a href="commande.html">
+                    <p>
+                        <input class="bouton__validation" type="submit" value="Envoyer votre commande !">
+                    </p>
+                </a>
+            </div>
+    </form>
+    <script src="static/js/panier.js"></script>
 </body>
 
 </html>
