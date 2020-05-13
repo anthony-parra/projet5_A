@@ -1,5 +1,3 @@
-import { response } from "express";
-
 const teddiesList = document.getElementById('teddies_list');
 const url = [
     'http://localhost:3000/api/teddies'
