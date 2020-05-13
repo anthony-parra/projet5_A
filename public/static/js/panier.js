@@ -6,9 +6,8 @@ fetch(' http://localhost:3000/api/teddies')
     });
 
 const url = ('http://localhost:3000/api/teddies');
-const lignePanier = document.querySelector('p#ligne');
-const declencheur = document.querySelector('button#bouton');
+const titre = document.querySelector('h2');
 
-declencheur.onclick = function() {
-    lignePanier = ('')
-};
+
+
+localStorage.setItem("titre", "Pouet");

@@ -50,6 +50,7 @@ h2 {
     text-align: center;
     margin-bottom: 50px;
     margin-top: 50px;
+    padding-top: 30px;
     font-family: 'Belligerent-Madness';
     font-weight: unset;
 }
@@ -115,39 +116,16 @@ h2 {
     transition: .6S;
 }
 
-.produit_panier {
-    display: flex;
-    flex-direction: column;
-}
-
-.ligne_nomenclature {
-    display: flex;
-    justify-content: space-evenly;
-    box-shadow: 1px 1px 12px gray;
-}
-
-.ligne_tableau {
+.panier__commande {
     display: flex;
     justify-content: space-evenly;
 }
 
-form {
-    display: flex;
-    flex-direction: column;
-    box-shadow: 1px 1px 12px gray;
-    margin: 0px 150px 150px 150px;
-}
-
-.nom__prenom {
-    display: flex;
-    justify-content: space-evenly;
-    text-align: center;
-}
-
+.nom__prenom,
 .adresse__ville {
-    text-align: center;
     display: flex;
     justify-content: space-evenly;
+    text-align: center;
 }
 
 .adresse__mail--bouton {
@@ -170,4 +148,9 @@ form {
 .bouton__validation:hover {
     transform: scale(1.15);
     transition: .6s;
+}
+
+form {
+    box-shadow: 1px 1px 12px gray;
+    margin: 0px 100px;
 }
