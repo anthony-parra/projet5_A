@@ -5,6 +5,9 @@
     font-style: normal;
 }
 
+
+/*---------------------------------------------------------ENSEMBLE DU PROJET-------------------------------------------------*/
+
 body {
     margin: auto;
 }
@@ -27,17 +30,6 @@ header {
     margin-left: 20px;
 }
 
-figcaption {
-    text-align: center;
-    color: black;
-    margin: 20px 0px 30px 0px;
-}
-
-figure {
-    box-shadow: 1px 1px 12px gray;
-    border-radius: 5%;
-}
-
 .panier {
     display: flex;
     align-items: center;
@@ -55,28 +47,49 @@ h2 {
     font-weight: unset;
 }
 
-.paragraphe__index {
-    text-align: center;
-    margin-top: 50px;
-}
 
-.photo__produit {
+/*---------------------------------------------------------INDEX.HTML-------------------------------------------------*/
+
+#teddies_list {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
 }
 
-.photo__inside {
-    margin: 0px 35px;
-    box-shadow: 1px 1px 5px gray;
-    border-radius: 10%;
-    transform: scale(1);
-    transition: .6s;
+.bloc__nom--prix {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 20px 20px;
 }
 
-.photo__inside:hover {
-    transform: scale(1.15);
-    transition: .6s;
+.ensemble__produits {
+    margin: 20px;
+}
+
+.bloc__image--nom--prix {
+    box-shadow: 1px 1px 12px gray;
+    padding: 10px 10px;
+}
+
+
+/*---------------------------------------------------------PRODUCT.HTML-------------------------------------------------*/
+
+#largeur__color {
+    width: 160px;
+}
+
+.bloc__personnalisation {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    box-shadow: 1px 1px 12px grey;
+    margin: 40px;
+    padding: 20px;
+}
+
+.paragraphe__index {
+    text-align: center;
+    margin-top: 50px;
 }
 
 .photo__personnalisation {
@@ -88,11 +101,6 @@ h2 {
     box-shadow: 1px 1px 12px gray;
     padding: 10px;
     width: 80%;
-}
-
-.photo__lenny_and_carl {
-    display: flex;
-    align-items: center;
 }
 
 #addPanier {
@@ -148,9 +156,4 @@ h2 {
 .bouton__validation:hover {
     transform: scale(1.15);
     transition: .6s;
-}
-
-form {
-    box-shadow: 1px 1px 12px gray;
-    margin: 0px 100px;
 }

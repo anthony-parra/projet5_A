@@ -1,14 +1,35 @@
-const getUsers = async function() {
-    let response = await fetch('http://localhost:3000/api/teddies')
-    let data = await response.json()
-    console.log(data)
-};
+const teddiesModif = document.getElementById('teddies__modification');
+const addPanier = document.getElementById('addpanier');
 
 
-const clickAdd = document.querySelector('button#addPanier');
+async function retrieveResult(url) {
+    let result = await fetch(url)
+    return result.json()
+}
 
-
-clickAdd.onclick = function() {
-    alert('Votre produit à bien été ajouté au panier !')
-    titres.innerHTML('localeStorage.titre')
-};
+retrieveResult('http://localhost:3000/api/teddies').then(teddies => {
+    console.log(teddies)
+    teddies.forEach(teddy => {
+        console.log(teddy)
+        teddiesModif.innerHTML = `<div class="bloc__personnalisation"> 
+                                    <article>
+                                        <img id="${teddy._id}" src="${teddy.imageUrl}" "${teddy._id}" alt="Photo de ${teddy.name}">
+                                    </article>
+                                    <article>
+                                        <p>Personnalisez votre Ours !</p>
+                                        <form>
+                                            <select id="largeur__color" name="couleur" size="1">
+                                                <option>Choisissez votre couleur
+                                                <option id="color">${teddy.colors[0]}
+                                                <option id="color">${teddy.colors[1]}
+                                                <option id="color">${teddy.colors[2]}
+                                            </select>
+                                        </form>
+                                        <p>Description : </p>
+                                        <p>${teddy.description}</p>
+                                        <p>Prix : ${teddy.price}€</p>
+                                        <button id="addpanier">Ajouter au panier !</button>
+                                    </article>
+                                </div>`
+    });
+});
