@@ -103,14 +103,13 @@ h2 {
     width: 80%;
 }
 
-#addPanier {
+#addpanier {
     display: flex;
     justify-content: center;
     border: 1px double gray;
     background-color: #f3e9f1;
     width: 150px;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 20px auto;
     padding: 10px;
     border-radius: 20px;
     font-family: 'Belligerent-Madness';
@@ -119,7 +118,7 @@ h2 {
     color: black;
 }
 
-#addPanier:hover {
+#addpanier:hover {
     transform: scale(1.15);
     transition: .6S;
 }
@@ -156,4 +155,16 @@ h2 {
 .bouton__validation:hover {
     transform: scale(1.15);
     transition: .6s;
+}
+
+#bloc__produit {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-evenly;
+    box-shadow: 1px 1px 12px gray;
+    margin: 0px 80px;
+}
+
+#description {
+    margin-top: 30px;
 }
