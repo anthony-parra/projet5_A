@@ -1,13 +1,19 @@
-fetch(' http://localhost:3000/api/teddies')
-    .then(function(response) {
-        return response.json()
-    }).then(function(data) {
-        console.log(data)
-    });
+lignePanier = localStorage.setItem('lignePanier', 'cellule', document.getElementById('panier__commande--elements'));
+const lignePanier = document.getElementById('panier__commande--elements');
+const bouton = document.getElementById('bouton');
 
-const url = ('http://localhost:3000/api/teddies');
-const titre = document.querySelector('h2');
+async function retrieveResult(url) {
+    let result = await fetch(url)
+    return result.json()
+}
+
+retrieveResult('http://localhost:3000/api/teddies').then(teddies => {
+    console.log(teddies)
 
 
+});
+bouton.addEventListener('click', add);
 
-localStorage.setItem("titre", "Pouet");
+function add() {
+    lignePanier.innerHTML = '<td> Tete de doude </td>'
+};

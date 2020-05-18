@@ -1,17 +1,17 @@
+/* ------VARIABLES------ HTML-------- */
 const teddiesModif = document.getElementById('teddies__modification');
 const addPanier = document.getElementById('addpanier');
 const urls = new URL(window.location.href);
 const searchParams = new URLSearchParams(urls.search);
 const teddyId = searchParams.get('id');
-
-/* ------VARIABLES------ HTML-------- */
-
 const image = document.getElementById('image__bloc');
 const titre = document.getElementById('titre__bloc');
 const select_colors = document.getElementById('color__bloc--option');
 const description = document.getElementById('description__bloc');
 const prix = document.getElementById('prix__bloc');
+const lignePanier = window.localStorage.getItem('lignePanier');
 
+/* --------------FETCH-------------- */
 
 async function result(url) {
     let result = await fetch(url)
@@ -36,6 +36,11 @@ result('http://localhost:3000/api/teddies' + '/' + teddyId).then(teddy => {
     prix.innerHTML = `<strong>Prix : </strong>${teddy.price}€`
 });
 
-addPanier.onclick = function() {
-    alert("Votre produit vient dêtre ajouté au panier");
-}
+/* --------------BOUTON AJOUT PANIER-------------- */
+
+
+addPanier.addEventListener('click', addLignePanier);
+
+function addLignePanier() {
+    lignePanier.innerHTML = `<td> LOL </td>`
+};
