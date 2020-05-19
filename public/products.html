@@ -20,7 +20,9 @@
         <div id="bloc__produit--info">
             <p id="titre__bloc"></p>
             <FORM>
-                <SELECT id="color__bloc--option">
+                <SELECT required id="color__bloc--option">
+                   
+                    <option id="colorInside" required>Choisissez votre couleur !</option>
                
             </SELECT>
             </FORM>
@@ -29,7 +31,7 @@
                 <p id="description__bloc"></p>
             </div>
             <div id="prix__bloc"></div>
-            <button id='addpanier'>Ajouter au panier !</button>
+            <input required type="submit" value='Ajouter au panier !' id='addpanier'></input>
         </div>
     </article>
 </body>
