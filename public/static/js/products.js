@@ -29,7 +29,7 @@ result('http://localhost:3000/api/teddies' + '/' + teddyId).then(teddy => {
 
     colorInside = document.getElementById('colorInside')
     for (i = 0; i < colors.length; i++) {
-        colorInside += '<option> ' + colors[i] + ' </option>';
+        colorInside += '<option id="colorInside"> ' + colors[i] + ' </option>';
     }
     select_colors.innerHTML += colorInside
 
@@ -40,15 +40,20 @@ result('http://localhost:3000/api/teddies' + '/' + teddyId).then(teddy => {
 
     /* --------------BOUTON AJOUT PANIER-------------- */
 
-    addCart.addEventListener('click', addProducts);
-    let newCart = null;
+    addCart.onclick = function() {
+        alert("Votre produit vient d'être ajouté au panier !")
+    };
 
+    addCart.addEventListener('click', addProducts);
+
+    let newCart = null;
 
     function createNewCart() {
         let storageCart = localStorage.getItem('cart');
         if (storageCart == null) {
             newCart = []
             console.log('Initialisation')
+            console.log('Création du panier !');
         } else {
             newCart = JSON.parse(storageCart)
             console.log('Récupération')
@@ -56,17 +61,17 @@ result('http://localhost:3000/api/teddies' + '/' + teddyId).then(teddy => {
 
         localStorage.setItem('cart', JSON.stringify(newCart));
 
-        console.log('Création du panier !');
     }
 
     function products() {
+
+        let productQuantity = 1;
         let productPrice = teddy.price;
         let productName = teddy.name;
         let productId = teddyId;
         let productColor = select_colors.options[select_colors.selectedIndex].value;
-        newCart.push({ productId, productColor, productName, productPrice });
+        newCart.push({ productId, productColor, productName, productPrice, productQuantity });
         localStorage.setItem('cart', JSON.stringify(newCart));
-
 
         console.log('Ajout du produit dans le panier !');
         console.log(newCart)
@@ -79,4 +84,5 @@ result('http://localhost:3000/api/teddies' + '/' + teddyId).then(teddy => {
         }
         products()
     }
+
 });
