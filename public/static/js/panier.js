@@ -2,8 +2,7 @@ const storageCart = localStorage.getItem('cart');
 const productsLists = JSON.parse(storageCart);
 const panierTableau = document.getElementById('panier__body');
 
-let button = document.createElement('button');
-button.innerHTML = `<i class="fas fa-times"></i>`;
+
 
 if (storageCart != null) {
 
@@ -53,6 +52,9 @@ if (storageCart != null) {
         colonneTableau5.innerHTML += (resultPrice + ' ' + '€');
 
         let colonneTableau6 = ligneTableau.insertCell(5);
+
+        let button = document.createElement('button');
+        button.innerHTML = `<i class="fas fa-times"></i>`;
 
         colonneTableau6.appendChild(button);
 
