@@ -5,10 +5,6 @@ const panierTableau = document.getElementById('panier__body');
 let button = document.createElement('button');
 button.innerHTML = `<i class="fas fa-times"></i>`;
 
-
-/*  */
-
-
 if (storageCart != null) {
 
     for (let i = 0; i < productsLists.length; i++) {
@@ -32,6 +28,12 @@ if (storageCart != null) {
 
         let buttonMinus = document.createElement('button');
         buttonMinus.innerHTML = `<i id="minus" class="fas fa-minus"></i>`;
+
+        buttonMinus.onclick = () => {
+            productsLists[i].productQuantity -= 1;
+            console.log(productsLists[i].productQuantity);
+        }
+
         colonneTableau4.appendChild(buttonMinus);
 
         colonneTableau4.innerHTML += quantityList;
@@ -40,8 +42,10 @@ if (storageCart != null) {
         buttonPlus.innerHTML = `<i id="plus" class="fas fa-plus"></i>`;
 
         buttonPlus.onclick = () => {
-            quantityList.value += 1;
-        };
+            productsLists[i].productQuantity += 1;
+
+            console.log(productsLists[i].productQuantity);
+        }
 
         colonneTableau4.appendChild(buttonPlus);
 
