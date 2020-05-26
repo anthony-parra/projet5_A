@@ -65,12 +65,18 @@ result('http://localhost:3000/api/teddies' + '/' + teddyId).then(teddy => {
 
     function products() {
 
-        let productQuantity = 1;
-        let productPrice = teddy.price;
-        let productName = teddy.name;
-        let productId = teddyId;
         let productColor = select_colors.options[select_colors.selectedIndex].value;
-        newCart.push({ productId, productColor, productName, productPrice, productQuantity });
+        let productId = teddyId;
+        let productFound = newCart.find(element => element.productId == productId && element.productColor == productColor);
+        if (productFound == undefined) {
+            let productQuantity = 1;
+            let productPrice = teddy.price;
+            let productName = teddy.name;
+            newCart.push({ productId, productColor, productName, productPrice, productQuantity });
+        } else {
+            productFound.productQuantity++;
+        }
+
         localStorage.setItem('cart', JSON.stringify(newCart));
 
         console.log('Ajout du produit dans le panier !');

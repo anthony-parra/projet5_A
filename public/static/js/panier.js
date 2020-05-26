@@ -1,23 +1,21 @@
 const storageCart = localStorage.getItem('cart');
 const productsLists = JSON.parse(storageCart);
-const panierTableau = document.getElementById('panier');
+const panierTableau = document.getElementById('panier__body');
+
+let button = document.createElement('button');
+button.innerHTML = `<i class="fas fa-times"></i>`;
 
 
-async function retrieveResult(url) {
-    let result = await fetch(url)
-    return result.json()
-}
+/*  */
 
-retrieveResult('http://localhost:3000/api/teddies').then(teddies => {
-    console.log(teddies)
 
+if (storageCart != null) {
 
     for (let i = 0; i < productsLists.length; i++) {
 
         const price = productsLists[i].productPrice;
-        const quantity = productsLists[i].productQuantity;
-        const resultPrice = price * quantity;
-
+        const quantityList = productsLists[i].productQuantity;
+        const resultPrice = price * quantityList;
 
         let ligneTableau = panierTableau.insertRow(-1);
 
@@ -25,28 +23,44 @@ retrieveResult('http://localhost:3000/api/teddies').then(teddies => {
         colonneTableau1.innerHTML += (productsLists[i].productName);
 
         let colonneTableau2 = ligneTableau.insertCell(1);
-        colonneTableau2.innerHTML += (price + ' ' + '€');
+        colonneTableau2.innerHTML += (`${price} €`);
 
         let colonneTableau3 = ligneTableau.insertCell(2);
         colonneTableau3.innerHTML += (productsLists[i].productColor);
 
         let colonneTableau4 = ligneTableau.insertCell(3);
-        colonneTableau4.innerHTML += quantity;
+
+        let buttonMinus = document.createElement('button');
+        buttonMinus.innerHTML = `<i id="minus" class="fas fa-minus"></i>`;
+        colonneTableau4.appendChild(buttonMinus);
+
+        colonneTableau4.innerHTML += quantityList;
+
+        let buttonPlus = document.createElement('button');
+        buttonPlus.innerHTML = `<i id="plus" class="fas fa-plus"></i>`;
+
+        buttonPlus.onclick = () => {
+            quantityList.value += 1;
+        };
+
+        colonneTableau4.appendChild(buttonPlus);
 
         let colonneTableau5 = ligneTableau.insertCell(4);
         colonneTableau5.innerHTML += (resultPrice + ' ' + '€');
 
         let colonneTableau6 = ligneTableau.insertCell(5);
-        let deleteProduct = '<button id="productDelete"><i class="fas fa-times"></i></button>';
-        colonneTableau6.innerHTML += deleteProduct;
+
+        colonneTableau6.appendChild(button);
+
+        button.addEventListener('click', function() {
+            panierTableau.deleteRow(i)
+            productsLists.splice(i, 1);
+            localStorage.setItem('cart', JSON.stringify(productsLists));
+            document.location.reload()
+        });
+
 
     }
 
-    let productDelete = document.getElementById('productDelete');
 
-    productDelete.addEventListener('clic', function() {
-        panierTableau.deleteRow()
-    });
-
-
-});
+}

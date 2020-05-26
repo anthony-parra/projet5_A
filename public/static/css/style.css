@@ -173,3 +173,7 @@ h2 {
 .fas {
     color: #9a61dd;
 }
+
+button {
+    margin: 8px;
+}
