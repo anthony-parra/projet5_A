@@ -8,8 +8,13 @@ if (storageCart != null) {
     for (let i = 0; i < productsLists.length; i++) {
 
         const price = productsLists[i].productPrice;
-        const quantityList = productsLists[i].productQuantity;
+        const quantityList = quantityLists();
         const resultPrice = price * quantityList;
+
+        function quantityLists() {
+            let quantityList = productsLists[i].productQuantity;
+            localStorage.setItem('cart', JSON.stringify(productsLists));
+        }
 
         let ligneTableau = panierTableau.insertRow(-1);
 
@@ -26,23 +31,21 @@ if (storageCart != null) {
 
         let buttonMinus = document.createElement('button');
         buttonMinus.innerHTML = `<i class = "fas fa-minus"></i>`;
-        buttonMinus.id = `minus- ${ i}`;
+        buttonMinus.id = `minus-${i}`;
         buttonMinus.onclick = (e) => {
-
             updateQte(e.currentTarget.id.split('-')[1], 'moins')
-
         }
 
         colonneTableau4.appendChild(buttonMinus);
 
         let spanQty = document.createElement("span");
-        spanQty.id = `qte - ${i}`;
+        spanQty.id = `qte-${i}`;
         spanQty.textContent = quantityList;
         colonneTableau4.appendChild(spanQty);
 
         let buttonPlus = document.createElement('button');
         buttonPlus.innerHTML = `<i class = "fas fa-plus"></i>`;
-        buttonPlus.id = `plus - ${i}`;
+        buttonPlus.id = `plus-${i}`;
         buttonPlus.onclick = (e) => {
             updateQte(e.currentTarget.id.split('-')[1], 'plus')
         }
@@ -70,7 +73,7 @@ if (storageCart != null) {
     }
 
     function updateQte(eltId, action) {
-        let qteElt = document.getElementById(`qte - ${eltId}`);
+        let qteElt = document.getElementById(`qte-${eltId}`);
         console.log(qteElt)
         let qte = parseInt(qteElt.textContent);
         let nvelleQte;
@@ -84,4 +87,6 @@ if (storageCart != null) {
         localStorage.setItem('cart', JSON.stringify(productsLists));
         console.log(productsLists[eltId].productQuantity);
     }
+
+
 }
