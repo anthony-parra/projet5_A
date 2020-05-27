@@ -3,7 +3,6 @@ const productsLists = JSON.parse(storageCart);
 const panierTableau = document.getElementById('panier__body');
 
 
-
 if (storageCart != null) {
 
     for (let i = 0; i < productsLists.length; i++) {
@@ -18,7 +17,7 @@ if (storageCart != null) {
         colonneTableau1.innerHTML += (productsLists[i].productName);
 
         let colonneTableau2 = ligneTableau.insertCell(1);
-        colonneTableau2.innerHTML += (`${price} €`);
+        colonneTableau2.innerHTML += `${price}€`;
 
         let colonneTableau3 = ligneTableau.insertCell(2);
         colonneTableau3.innerHTML += (productsLists[i].productColor);
@@ -26,24 +25,26 @@ if (storageCart != null) {
         let colonneTableau4 = ligneTableau.insertCell(3);
 
         let buttonMinus = document.createElement('button');
-        buttonMinus.innerHTML = `<i id="minus" class="fas fa-minus"></i>`;
+        buttonMinus.innerHTML = `<i class = "fas fa-minus"></i>`;
+        buttonMinus.id = `minus- ${ i}`;
+        buttonMinus.onclick = (e) => {
 
-        buttonMinus.onclick = () => {
-            productsLists[i].productQuantity -= 1;
-            console.log(productsLists[i].productQuantity);
+            updateQte(e.currentTarget.id.split('-')[1], 'moins')
+
         }
 
         colonneTableau4.appendChild(buttonMinus);
 
-        colonneTableau4.innerHTML += quantityList;
+        let spanQty = document.createElement("span");
+        spanQty.id = `qte - ${i}`;
+        spanQty.textContent = quantityList;
+        colonneTableau4.appendChild(spanQty);
 
         let buttonPlus = document.createElement('button');
-        buttonPlus.innerHTML = `<i id="plus" class="fas fa-plus"></i>`;
-
-        buttonPlus.onclick = () => {
-            productsLists[i].productQuantity += 1;
-
-            console.log(productsLists[i].productQuantity);
+        buttonPlus.innerHTML = `<i class = "fas fa-plus"></i>`;
+        buttonPlus.id = `plus - ${i}`;
+        buttonPlus.onclick = (e) => {
+            updateQte(e.currentTarget.id.split('-')[1], 'plus')
         }
 
         colonneTableau4.appendChild(buttonPlus);
@@ -54,7 +55,7 @@ if (storageCart != null) {
         let colonneTableau6 = ligneTableau.insertCell(5);
 
         let button = document.createElement('button');
-        button.innerHTML = `<i class="fas fa-times"></i>`;
+        button.innerHTML = `<i class = "fas fa-times"></i>`;
 
         colonneTableau6.appendChild(button);
 
@@ -68,5 +69,19 @@ if (storageCart != null) {
 
     }
 
-
+    function updateQte(eltId, action) {
+        let qteElt = document.getElementById(`qte - ${eltId}`);
+        console.log(qteElt)
+        let qte = parseInt(qteElt.textContent);
+        let nvelleQte;
+        if (action === "plus") {
+            nvelleQte = qte + 1;
+        } else {
+            nvelleQte = qte - 1 >= 0 ? qte - 1 : 0;
+        }
+        productsLists[eltId].productQuantity = nvelleQte;
+        qteElt.textContent = nvelleQte;
+        localStorage.setItem('cart', JSON.stringify(productsLists));
+        console.log(productsLists[eltId].productQuantity);
+    }
 }
