@@ -3,18 +3,20 @@ const productsLists = JSON.parse(storageCart);
 const panierTableau = document.getElementById('panier__body');
 
 
+
 if (storageCart != null) {
 
     for (let i = 0; i < productsLists.length; i++) {
 
         const price = productsLists[i].productPrice;
-        const quantityList = quantityLists();
+        const quantityList = productsLists[i].productQuantity;
         const resultPrice = price * quantityList;
 
-        function quantityLists() {
-            let quantityList = productsLists[i].productQuantity;
-            localStorage.setItem('cart', JSON.stringify(productsLists));
-        }
+        let somme = 0;
+        somme += resultPrice;
+
+        console.log(somme);
+
 
         let ligneTableau = panierTableau.insertRow(-1);
 
@@ -69,24 +71,26 @@ if (storageCart != null) {
             document.location.reload()
         });
 
+        const totalPrice = document.getElementById('prix__total');
+        totalPrice.innerHTML = `<p>Prix Total de votre panier</p>${somme}<p></p>`;
 
-    }
-
-    function updateQte(eltId, action) {
-        let qteElt = document.getElementById(`qte-${eltId}`);
-        console.log(qteElt)
-        let qte = parseInt(qteElt.textContent);
-        let nvelleQte;
-        if (action === "plus") {
-            nvelleQte = qte + 1;
-        } else {
-            nvelleQte = qte - 1 >= 0 ? qte - 1 : 0;
+        function updateQte(eltId, action) {
+            let qteElt = document.getElementById(`qte-${eltId}`);
+            console.log(qteElt)
+            let qte = parseInt(qteElt.textContent);
+            let nvelleQte;
+            if (action === "plus") {
+                nvelleQte = qte + 1;
+            } else {
+                nvelleQte = qte - 1 >= 0 ? qte - 1 : 0;
+            }
+            let price = productsLists[eltId].productPrice;
+            let resultPrice = nvelleQte * price;
+            productsLists[eltId].productQuantity = nvelleQte;
+            qteElt.textContent = nvelleQte;
+            localStorage.setItem('cart', JSON.stringify(productsLists));
+            document.location.reload()
+            console.log(productsLists[eltId].productQuantity);
         }
-        productsLists[eltId].productQuantity = nvelleQte;
-        qteElt.textContent = nvelleQte;
-        localStorage.setItem('cart', JSON.stringify(productsLists));
-        console.log(productsLists[eltId].productQuantity);
     }
-
-
 }
