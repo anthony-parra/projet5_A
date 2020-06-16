@@ -15,7 +15,7 @@ if (storageCart != null) {
         somme += resultPrice;
 
         let ligneTableau = panierTableau.insertRow(-1);
-
+        ligneTableau.id = "ligne-" + i;
         let colonneTableau1 = ligneTableau.insertCell(0);
         colonneTableau1.innerHTML += (productsLists[i].productName);
 
@@ -26,6 +26,8 @@ if (storageCart != null) {
         colonneTableau3.innerHTML += (productsLists[i].productColor);
 
         let colonneTableau4 = ligneTableau.insertCell(3);
+
+
 
         let buttonMinus = document.createElement('button');
         buttonMinus.innerHTML = `<i class = "fas fa-minus"></i>`;
@@ -46,11 +48,13 @@ if (storageCart != null) {
         buttonPlus.id = `plus-${i}`;
         buttonPlus.onclick = (e) => {
             updateQte(e.currentTarget.id.split('-')[1], 'plus')
+
         }
 
         colonneTableau4.appendChild(buttonPlus);
 
         let colonneTableau5 = ligneTableau.insertCell(4);
+        colonneTableau5.id = 'prixTotal-' + i;
         colonneTableau5.innerHTML += (resultPrice + ' ' + '€');
 
         let colonneTableau6 = ligneTableau.insertCell(5);
@@ -64,29 +68,57 @@ if (storageCart != null) {
             panierTableau.deleteRow(i)
             productsLists.splice(i, 1);
             localStorage.setItem('cart', JSON.stringify(productsLists));
-            document.location.reload()
         });
 
         const totalPrice = document.getElementById('prix__total');
-        totalPrice.innerHTML = `<p>Prix Total de votre panier</p><p>${somme}€</p>`;
-
-        function updateQte(eltId, action) {
-            let qteElt = document.getElementById(`qte-${eltId}`);
-            console.log(qteElt)
-            let qte = parseInt(qteElt.textContent);
-            let nvelleQte;
-            if (action === "plus") {
-                nvelleQte = qte + 1;
-            } else {
-                nvelleQte = qte - 1 >= 0 ? qte - 1 : 0;
-            }
-            let price = productsLists[eltId].productPrice;
-            let resultPrice = nvelleQte * price;
-            productsLists[eltId].productQuantity = nvelleQte;
-            qteElt.textContent = nvelleQte;
-            localStorage.setItem('cart', JSON.stringify(productsLists));
-            document.location.reload()
-            console.log(productsLists[eltId].productQuantity);
-        }
+        totalPrice.innerHTML = `<div id="blocPrixTotal"><p id="titrePrixTotal">Prix Total de votre panier<p><p id='totalPanier'>${somme}€</p></div>`;
     }
 }
+
+function updateQte(eltId, action) {
+    let qteElt = document.getElementById(`qte-${eltId}`);
+    let totalElt = document.getElementById(`prixTotal-${eltId}`)
+    let totalPanier = document.getElementById('totalPanier');
+    console.log(qteElt)
+    let qte = parseInt(qteElt.textContent);
+    let nvelleQte = 0;
+    let price = productsLists[eltId].productPrice;
+    let newTotal = totalPanier.textContent;
+    if (action === "plus") {
+        nvelleQte = qte + 1;
+        newTotal = parseInt(totalPanier.textContent) + price;
+    } else {
+        if (qte - 1 >= 0) {
+            nvelleQte = qte - 1;
+            newTotal = parseInt(totalPanier.textContent) - price;
+        }
+    }
+
+    let resultPrice = nvelleQte * price;
+
+    productsLists[eltId].productQuantity = nvelleQte;
+    qteElt.textContent = nvelleQte;
+    totalElt.textContent = `${resultPrice} €`;
+    totalPanier.textContent = newTotal;
+    localStorage.setItem('cart', JSON.stringify(productsLists));
+    console.log(productsLists[eltId].productQuantity);
+}
+
+// récupérer les champs de formualires 
+
+// créer les éléments à envoyer à l'Api
+/*
+ * contact: {
+ *   firstName: Anthony,
+ *   lastName: Parra,
+ *   address: Mon adresse,
+ *   city: La Rochelle,
+ *   email: anthony.parra@gmail.com
+ * }
+ * products: ["5be9c8541c9d440000665243", "5be9c8541c9d440000665243", "5be9c8541c9d440000665243"]
+ * 
+ */
+// utiliser fetch pour envoyer à l'API et s'assurer que l'on ressoit une réponse avec le tableau des produits
+// et l'order_id
+
+// aller sur la page commande

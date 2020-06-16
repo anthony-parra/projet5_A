@@ -123,11 +123,12 @@ h2 {
     transition: .6S;
 }
 
-#panier {
+
+/* #panier {
     width: 100%;
     text-align: center;
     padding: 20px;
-}
+} */
 
 .nom__prenom,
 .adresse__ville {
@@ -176,4 +177,53 @@ h2 {
 
 button {
     margin: 8px;
+}
+
+
+/*---------------------------------------------------------PANIER.HTML-------------------------------------------------*/
+
+#panier {
+    border-collapse: collapse;
+    margin: 0px 50px 0px 50px;
+    display: flex;
+    flex-direction: column;
+}
+
+tr {
+    display: flex;
+    justify-content: space-around;
+    border-bottom: 2px double gray;
+    padding: 10px 0px;
+}
+
+td {
+    text-align: center;
+    width: 100%;
+}
+
+tr:nth-child(odd) {
+    background: #f3e9f1;
+}
+
+tr#panier__commande {
+    background-color: white;
+    font-family: 'Belligerent-Madness';
+}
+
+p#titrePrixTotal {
+    font-family: 'Belligerent-Madness';
+}
+
+#blocPrixTotal {
+    margin: 50px;
+    text-align: center;
+}
+
+#totalPanier {
+    border-top: 2px double gray;
+    border-bottom: 2px double gray;
+    margin-left: auto;
+    margin-right: auto;
+    width: 10%;
+    background: #f3e9f1;
 }
