@@ -1,7 +1,7 @@
 const storageCart = localStorage.getItem('cart');
 const productsLists = JSON.parse(storageCart);
 const panierTableau = document.getElementById('panier__body');
-
+let somme = 0;
 
 
 if (storageCart != null) {
@@ -12,11 +12,7 @@ if (storageCart != null) {
         const quantityList = productsLists[i].productQuantity;
         const resultPrice = price * quantityList;
 
-        let somme = 0;
         somme += resultPrice;
-
-        console.log(somme);
-
 
         let ligneTableau = panierTableau.insertRow(-1);
 
@@ -72,7 +68,7 @@ if (storageCart != null) {
         });
 
         const totalPrice = document.getElementById('prix__total');
-        totalPrice.innerHTML = `<p>Prix Total de votre panier</p>${somme}<p></p>`;
+        totalPrice.innerHTML = `<p>Prix Total de votre panier</p><p>${somme}€</p>`;
 
         function updateQte(eltId, action) {
             let qteElt = document.getElementById(`qte-${eltId}`);
