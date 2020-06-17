@@ -68,6 +68,7 @@ if (storageCart != null) {
             panierTableau.deleteRow(i)
             productsLists.splice(i, 1);
             localStorage.setItem('cart', JSON.stringify(productsLists));
+            document.location.reload()
         });
 
         const totalPrice = document.getElementById('prix__total');

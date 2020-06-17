@@ -11,8 +11,11 @@
 
 <body>
     <header>
-        <a href="index.html"><img class="logo" src="static/images/logo_Orinoco.png" alt="logo de l'entreprise Orinoco"></a>
-        <div class="panier"><a href="panier.html"><i class="fas fa-shopping-bag fa-2x"></i></a></div>
+        <img class="logo" src="static/images/logo_Orinoco.png" alt="logo de l'entreprise Orinoco">
+        <a href="index.html">
+            <p class="titreOrinoco">ORINOCO</p>
+        </a>
+        <div><a href="panier.html"><i id="panier" class="fas fa-cart-arrow-down"></i></a></div>
     </header>
     <h1>Personnalisez votre produit !</h1>
     <article id="bloc__produit">
@@ -20,6 +23,7 @@
         <div id="bloc__produit--info">
             <p id="titre__bloc"></p>
             <FORM>
+                <p id="titleProduct"><strong>Choisissez la couleur de votre choix :</strong></p>
                 <SELECT id="color__bloc--option">       
                 </SELECT>
             </FORM>

@@ -22,19 +22,21 @@ a {
 
 header {
     display: flex;
+    align-items: center;
+    font-size: 3em;
     justify-content: space-between;
     box-shadow: 1px 1px 12px gray;
+    font-family: 'Belligerent-Madness';
+    background-color: #f3e9f1;
+}
+
+.titreOrinoco {
+    color: black;
+    opacity: 0.7;
 }
 
 .logo {
     margin-left: 20px;
-}
-
-.panier {
-    display: flex;
-    align-items: center;
-    margin-right: 40px;
-    color: #9a61dd;
 }
 
 h1,
@@ -123,12 +125,15 @@ h2 {
     transition: .6S;
 }
 
-
-/* #panier {
-    width: 100%;
+p#titre__bloc {
     text-align: center;
-    padding: 20px;
-} */
+    border-bottom: 2px double #f3e9f1;
+    padding-bottom: 5px;
+}
+
+.titleProduct {
+    font-family: 'Belligerent-Madness';
+}
 
 .nom__prenom,
 .adresse__ville {
@@ -187,6 +192,8 @@ button {
     margin: 0px 50px 0px 50px;
     display: flex;
     flex-direction: column;
+    color: black;
+    opacity: 0.7;
 }
 
 tr {
@@ -226,4 +233,16 @@ p#titrePrixTotal {
     margin-right: auto;
     width: 10%;
     background: #f3e9f1;
+}
+
+.formulaire {
+    box-shadow: 1px 1px 12px gray;
+    margin: 100px 200px 50px 200px;
+    background-color: #E9EDF0;
+}
+
+.titreCommande {
+    border-bottom: 2px double #f3e9f1;
+    padding: 10px 0px;
+    margin: 0px 50px;
 }

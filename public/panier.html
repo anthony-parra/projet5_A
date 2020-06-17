@@ -11,8 +11,11 @@
 
 <body>
     <header>
-        <a href="index.html"><img class="logo" src="static/images/logo_Orinoco.png" alt="logo de l'entreprise Orinoco"></a>
-        <div class="panier"><a href="panier.html"><i class="fas fa-shopping-bag fa-2x"></i></a></div>
+        <img class="logo" src="static/images/logo_Orinoco.png" alt="logo de l'entreprise Orinoco">
+        <a href="index.html">
+            <p class="titreOrinoco">ORINOCO</p>
+        </a>
+        <div><a href="panier.html"><i id="panier" class="fas fa-cart-arrow-down"></i></a></div>
     </header>
 
     <h1>Résumé des produits de votre panier</h1>
@@ -34,8 +37,8 @@
         </tfoot>
     </table>
 
-    <form method="post" action="">
-        <h2>Formulaire de commande ! </h2>
+    <form class="formulaire" method="post" action="">
+        <h2 class="titreCommande">Formulaire de commande ! </h2>
         <div class="nom__prenom">
             <p>
                 <label for="nom">Votre nom</label><br>
