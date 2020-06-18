@@ -37,38 +37,37 @@
         </tfoot>
     </table>
 
-    <form class="formulaire" method="post" action="">
+    <form id="formulaire" method="post" action="commande.html">
         <h2 class="titreCommande">Formulaire de commande ! </h2>
         <div class="nom__prenom">
             <p>
-                <label for="nom">Votre nom</label><br>
-                <input type="text" name="nom" id="nom" required size="50px">
+                <label for="firstName">Votre nom</label><br>
+                <input type="text" name="firstName" id="firstName" required size="50px">
             </p>
             <p>
-                <label for="prenom">Votre prénom</label><br>
-                <input type="text" name="prenom" id="prenom" required size="50px">
+                <label for="lastName">Votre prénom</label><br>
+                <input type="text" name="lastName" id="lastName" required size="50px">
             </p>
         </div>
         <div class="adresse__ville">
             <p>
-                <label for="adresse">Votre adresse postale</label><br>
-                <input type="text" name="adresse" id="adresse" required size="50px">
+                <label for="address">Votre adresse postale</label><br>
+                <input type="text" name="address" id="adress" required size="50px">
             </p>
             <p>
-                <label for="ville">Votre ville</label><br>
-                <input type="text" name="ville" id="ville" required size="50px">
+                <label for="city">Votre ville</label><br>
+                <input type="text" name="city" id="city" required size="50px">
             </p>
         </div>
         <div class="adresse__mail--bouton">
             <p>
-                <label for="mail">Votre adresse mail</label><br>
-                <input type="email" name="mail" id="mail" required size="50px">
+                <label for="email">Votre adresse mail</label><br>
+                <input type="email" name="email" id="email" required size="50px">
             </p>
-            <a href="commande.html">
-                <p>
-                    <input class="bouton__validation" type="submit" value="Envoyer votre commande !">
-                </p>
-            </a>
+            <p>
+                <a href="commande.html"><input id="bouton__validation" type="submit" value="Envoyer votre commande !"></a>
+            </p>
+
         </div>
     </form>
     <script src="static/js/panier.js"></script>

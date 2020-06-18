@@ -73,8 +73,23 @@ if (storageCart != null) {
 
         const totalPrice = document.getElementById('prix__total');
         totalPrice.innerHTML = `<div id="blocPrixTotal"><p id="titrePrixTotal">Prix Total de votre panier<p><p id='totalPanier'>${somme}€</p></div>`;
+
+        let products = [];
+        let productId = productsLists[i].productId;
+
+        products.push(productId);
+
+        console.log(products)
     }
 }
+let contact = {
+    firstName: 'Anthony',
+    lastName: 'Parra',
+    city: 'La Rochelle',
+    address: '14 rue des bouvreuils, 17180 Périgny',
+    email: 'anthonyparra62@gmail.com'
+}
+console.log(contact);
 
 function updateQte(eltId, action) {
     let qteElt = document.getElementById(`qte-${eltId}`);
@@ -103,6 +118,7 @@ function updateQte(eltId, action) {
     totalPanier.textContent = newTotal;
     localStorage.setItem('cart', JSON.stringify(productsLists));
     console.log(productsLists[eltId].productQuantity);
+
 }
 
 // récupérer les champs de formualires 
@@ -122,4 +138,4 @@ function updateQte(eltId, action) {
 // utiliser fetch pour envoyer à l'API et s'assurer que l'on ressoit une réponse avec le tableau des produits
 // et l'order_id
 
-// aller sur la page commande
+// aller sur la page commandelet contact = new Object();

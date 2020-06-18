@@ -148,7 +148,7 @@ p#titre__bloc {
     text-align: center;
 }
 
-.bouton__validation {
+#bouton__validation {
     background-color: #f3e9f1;
     padding: 10px;
     font-size: 15px;
@@ -159,7 +159,7 @@ p#titre__bloc {
     color: black;
 }
 
-.bouton__validation:hover {
+#bouton__validation:hover {
     transform: scale(1.15);
     transition: .6s;
 }
@@ -235,7 +235,7 @@ p#titrePrixTotal {
     background: #f3e9f1;
 }
 
-.formulaire {
+#formulaire {
     box-shadow: 1px 1px 12px gray;
     margin: 100px 200px 50px 200px;
     background-color: #E9EDF0;
