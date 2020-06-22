@@ -74,22 +74,56 @@ if (storageCart != null) {
         const totalPrice = document.getElementById('prix__total');
         totalPrice.innerHTML = `<div id="blocPrixTotal"><p id="titrePrixTotal">Prix Total de votre panier<p><p id='totalPanier'>${somme}€</p></div>`;
 
-        let products = [];
-        let productId = productsLists[i].productId;
 
-        products.push(productId);
-
-        console.log(products)
     }
 }
-let contact = {
-    firstName: 'Anthony',
-    lastName: 'Parra',
-    city: 'La Rochelle',
-    address: '14 rue des bouvreuils, 17180 Périgny',
-    email: 'anthonyparra62@gmail.com'
+let products = [];
+for (let i = 0; i < productsLists.length; i++) {
+    let productId = productsLists[i].productId;
+    products.push(productId);
 }
-console.log(contact);
+let contact = {
+    firstName: document.getElementById('firstName').value,
+    lastName: document.getElementById('lastName').value,
+    city: document.getElementById('city').value,
+    address: document.getElementById('address').value,
+    email: document.getElementById('email').value,
+}
+
+const myCart = { contact, products };
+console.log(myCart);
+
+let maCommande = new FormData();
+maCommande = myCart;
+
+
+
+
+let boutonValidation = document.getElementById('bouton__validation');
+boutonValidation.addEventListener('click', envoieDonnee);
+
+function envoieDonnee() {
+
+
+    fetch("http://localhost:3000/api/teddies/order", {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json;charset=utf-8'
+            },
+            body: JSON.stringify(maCommande)
+
+        }).then(function(response) {
+            return response.json();
+        })
+        .then(function(myJsonObj) {
+            localStorage.setItem('commande', JSON.stringify(myJsonObj));
+        })
+        .catch(function(error) {
+            console.error("Erreur au niveau des données dans la requête order", error);
+        })
+}
+
+
 
 function updateQte(eltId, action) {
     let qteElt = document.getElementById(`qte-${eltId}`);
@@ -120,22 +154,3 @@ function updateQte(eltId, action) {
     console.log(productsLists[eltId].productQuantity);
 
 }
-
-// récupérer les champs de formualires 
-
-// créer les éléments à envoyer à l'Api
-/*
- * contact: {
- *   firstName: Anthony,
- *   lastName: Parra,
- *   address: Mon adresse,
- *   city: La Rochelle,
- *   email: anthony.parra@gmail.com
- * }
- * products: ["5be9c8541c9d440000665243", "5be9c8541c9d440000665243", "5be9c8541c9d440000665243"]
- * 
- */
-// utiliser fetch pour envoyer à l'API et s'assurer que l'on ressoit une réponse avec le tableau des produits
-// et l'order_id
-
-// aller sur la page commandelet contact = new Object();

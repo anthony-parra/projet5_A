@@ -246,3 +246,23 @@ p#titrePrixTotal {
     padding: 10px 0px;
     margin: 0px 50px;
 }
+
+
+/* ------------------COMMNANDE.HTML----------------*/
+
+#bloc__commande {
+    text-align: center;
+    margin-top: 50px;
+}
+
+
+/* ------------------RESPONSIVE INDEX.HTML----------------*/
+
+@media screen and (max-width: 550px) {
+    .logo {
+        display: none;
+    }
+    #image_responsive {
+        width: 90%;
+    }
+}
