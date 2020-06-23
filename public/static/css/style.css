@@ -39,6 +39,12 @@ header {
     margin-left: 20px;
 }
 
+i#logo_panier {
+    color: black;
+    opacity: 0.7;
+    margin-right: 20px;
+}
+
 h1,
 h2 {
     text-align: center;
@@ -74,7 +80,7 @@ h2 {
 }
 
 
-/*---------------------------------------------------------PRODUCT.HTML-------------------------------------------------*/
+/*---------------------------------------------------------PRODUCTS.HTML-------------------------------------------------*/
 
 #largeur__color {
     width: 160px;
@@ -129,6 +135,7 @@ p#titre__bloc {
     text-align: center;
     border-bottom: 2px double #f3e9f1;
     padding-bottom: 5px;
+    margin: 0px 10px;
 }
 
 .titleProduct {
@@ -167,9 +174,10 @@ p#titre__bloc {
 #bloc__produit {
     display: flex;
     flex-direction: row-reverse;
-    justify-content: space-evenly;
+    justify-content: space-between;
     box-shadow: 1px 1px 12px gray;
-    margin: 0px 80px;
+    margin: 0px 20px;
+    padding: 0px 20px;
 }
 
 #description {
@@ -177,7 +185,7 @@ p#titre__bloc {
 }
 
 .fas {
-    color: #9a61dd;
+    color: #915ffe;
 }
 
 button {
@@ -201,6 +209,7 @@ tr {
     justify-content: space-around;
     border-bottom: 2px double gray;
     padding: 10px 0px;
+    align-items: center;
 }
 
 td {
@@ -237,7 +246,7 @@ p#titrePrixTotal {
 
 #formulaire {
     box-shadow: 1px 1px 12px gray;
-    margin: 100px 200px 50px 200px;
+    margin: 80px 100px 50px 100px;
     background-color: #E9EDF0;
 }
 
@@ -263,6 +272,97 @@ p#titrePrixTotal {
         display: none;
     }
     #image_responsive {
+        width: 100%;
+    }
+    header {
+        display: flex;
+        justify-content: space-around;
+    }
+    .titreOrinoco {
+        font-size: 1em;
+    }
+    #panier {
+        margin: 0px;
+    }
+    h1 {
+        font-size: 1.5em;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+}
+
+
+/* ------------------RESPONSIVE PRODUCTS.HTML----------------*/
+
+@media screen and (max-width: 900px) {
+    #bloc__produit {
+        display: flex;
+        flex-direction: column;
+        padding: 0px;
+        margin: 0px 5px 5px;
+    }
+    #image__bloc {
+        display: flex;
+        justify-content: center;
+    }
+    #bloc__produit--info {
+        text-align: center;
+    }
+    img {
         width: 90%;
+    }
+    #description {
+        padding: 0px 10px;
+    }
+    .logo {
+        display: none;
+    }
+    header {
+        display: flex;
+        justify-content: space-around;
+    }
+    .titreOrinoco {
+        font-size: 1em;
+    }
+}
+
+
+/* ------------------RESPONSIVE PANIER.HTML----------------*/
+
+@media screen and (max-width: 750px) {
+    .nom__prenom {
+        display: flex;
+        flex-direction: column;
+    }
+    .adresse__ville {
+        display: flex;
+        flex-direction: column;
+    }
+    #formulaire {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin: 50px 10px 20px 10px;
+    }
+    #panier {
+        margin: 10px;
+        font-size: 12px;
+    }
+    button {
+        margin: 2px;
+        padding: 0px;
+        font-size: 9px;
+    }
+    #totalPanier {
+        width: 25%;
+    }
+}
+
+
+/* ------------------RESPONSIVE PANIER.HTML----------------*/
+
+@media screen and (max-width: 900px) {
+    #bloc__commande {
+        padding: 10px;
     }
 }

@@ -72,7 +72,7 @@ if (storageCart != null) {
         });
 
         const totalPrice = document.getElementById('prix__total');
-        totalPrice.innerHTML = `<div id="blocPrixTotal"><p id="titrePrixTotal">Prix Total de votre panier<p><p id='totalPanier'>${somme}€</p></div>`;
+        totalPrice.innerHTML = `<div id="blocPrixTotal"><p id="titrePrixTotal">Prix Total de votre panier<p><p id='totalPanier'>${somme} €</p></div>`;
 
 
     }
@@ -83,11 +83,11 @@ for (let i = 0; i < productsLists.length; i++) {
     products.push(productId);
 }
 let contact = {
-    firstName: document.getElementById('firstName').value,
-    lastName: document.getElementById('lastName').value,
-    city: document.getElementById('city').value,
-    address: document.getElementById('address').value,
-    email: document.getElementById('email').value,
+    firstName: "Anthony",
+    lastName: "Parra",
+    city: "Périgny",
+    address: "14 rue des bouvreuils, 17180",
+    email: "anthonyparra62@gmail.com",
 }
 
 const myCart = { contact, products };
