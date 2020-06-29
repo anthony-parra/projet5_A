@@ -55,7 +55,7 @@ if (storageCart != null) {
 
         let colonneTableau5 = ligneTableau.insertCell(4);
         colonneTableau5.id = 'prixTotal-' + i;
-        colonneTableau5.innerHTML += (resultPrice + ' ' + '€');
+        colonneTableau5.innerHTML += (resultPrice + ' €');
 
         let colonneTableau6 = ligneTableau.insertCell(5);
 
@@ -77,50 +77,49 @@ if (storageCart != null) {
 
     }
 }
-let products = [];
-for (let i = 0; i < productsLists.length; i++) {
-    let productId = productsLists[i].productId;
-    products.push(productId);
-}
-let contact = {
-    firstName: "Anthony",
-    lastName: "Parra",
-    city: "Périgny",
-    address: "14 rue des bouvreuils, 17180",
-    email: "anthonyparra62@gmail.com",
-}
-
-const myCart = { contact, products };
-console.log(myCart);
-
-let maCommande = new FormData();
-maCommande = myCart;
 
 
+document.getElementById('formulaire').addEventListener('submit', (event) => {
+    event.preventDefault();
+    let products = [];
+    for (let i = 0; i < productsLists.length; i++) {
+        let productId = productsLists[i].productId;
+        products.push(productId);
+    }
+    let maCommandeForm = new FormData(document.getElementById('formulaire'));
+    let contact = {
+        firstName: maCommandeForm.get("firstName"),
+        lastName: maCommandeForm.get("lastName"),
+        city: maCommandeForm.get("city"),
+        address: maCommandeForm.get("address"),
+        email: maCommandeForm.get("email"),
+    }
+    const myCart = { contact, products };
+    console.log("myCart", myCart);
+    envoieDonnee("http://localhost:3000/api/teddies/order", myCart)
 
+});
 
-let boutonValidation = document.getElementById('bouton__validation');
-boutonValidation.addEventListener('click', envoieDonnee);
+async function envoieDonnee(url, order) {
 
-function envoieDonnee() {
-
-
-    fetch("http://localhost:3000/api/teddies/order", {
+    fetch(url, {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json;charset=utf-8'
             },
-            body: JSON.stringify(maCommande)
+            body: JSON.stringify(order)
 
         }).then(function(response) {
             return response.json();
         })
         .then(function(myJsonObj) {
             localStorage.setItem('commande', JSON.stringify(myJsonObj));
+            window.location.replace('./commande.html');
+            alert('Votre commande a bien été enregistré par nos services !')
         })
         .catch(function(error) {
             console.error("Erreur au niveau des données dans la requête order", error);
-        })
+        });
 }
 
 
@@ -152,5 +151,4 @@ function updateQte(eltId, action) {
     totalPanier.textContent = newTotal;
     localStorage.setItem('cart', JSON.stringify(productsLists));
     console.log(productsLists[eltId].productQuantity);
-
 }

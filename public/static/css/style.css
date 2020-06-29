@@ -256,6 +256,10 @@ p#titrePrixTotal {
     margin: 0px 50px;
 }
 
+input:valid:active {
+    box-shadow: 0 0 2px 1px green;
+}
+
 
 /* ------------------COMMNANDE.HTML----------------*/
 
