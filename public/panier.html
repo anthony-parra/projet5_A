@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Orinoco - Voici le résumé de votre panier !">
     <link href="static/css/style.css" rel="stylesheet">
     <script src="https://kit.fontawesome.com/e86bda96b6.js" crossorigin="anonymous"></script>
     <title>Panier - Orinoco</title>
@@ -56,7 +57,7 @@
             </p>
             <p>
                 <label for="city">Votre ville, CP</label><br>
-                <input type="text" name="city" id="city" required size="20px" placeholder="17000 La Rochelle" pattern="[0-9]{5}\s[a-zA-Z]{2,10}" title="Veuillez suivre le format indiqué.">
+                <input type="text" name="city" id="city" required size="20px" placeholder="17000 La Rochelle" pattern="[0-9]{5}\s\w.{2,10}" title="Veuillez suivre le format indiqué.">
             </p>
         </div>
         <div class="adresse__mail--bouton">

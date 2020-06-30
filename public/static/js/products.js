@@ -22,11 +22,12 @@ async function result(url) {
 
 result('http://localhost:3000/api/teddies' + '/' + teddyId).then(teddy => {
     console.log(teddy)
-    colors = teddy.colors
+
 
     titre.innerHTML = `Amusez-vous et personnalisez ${teddy.name} !`;
     image.innerHTML = `<img src="${teddy.imageUrl}" alt="Photo de ${teddy.name} ">`;
 
+    colors = teddy.colors
     colorInside = document.getElementById('colorInside')
     for (i = 0; i < colors.length; i++) {
         colorInside += '<option id="colorInside"> ' + colors[i] + ' </option>';
