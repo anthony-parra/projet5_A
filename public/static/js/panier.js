@@ -87,16 +87,21 @@ document.getElementById('formulaire').addEventListener('submit', (event) => {
         products.push(productId);
     }
     let maCommandeForm = new FormData(document.getElementById('formulaire'));
-    let contact = {
-        firstName: maCommandeForm.get("firstName"),
-        lastName: maCommandeForm.get("lastName"),
-        city: maCommandeForm.get("city"),
-        address: maCommandeForm.get("address"),
-        email: maCommandeForm.get("email"),
+    let nameFormat = new RegExp(/^[A-Za-z àèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇßØøÅåÆæœ \s]{1,}/);
+    let addressFormat = new RegExp(/[A-Za-z0-9\s]{5,}/);
+    let cityFormat = new RegExp(/[0-9]{5}\s[A-Za-z\s]{2,}/);
+    if (nameFormat.test(maCommandeForm.get("firstName")) && nameFormat.test(maCommandeForm.get('lastName')) && addressFormat.test(maCommandeForm.get('address')) && cityFormat.test(maCommandeForm.get('city'))) {
+        let contact = {
+            firstName: maCommandeForm.get("firstName"),
+            lastName: maCommandeForm.get("lastName"),
+            city: maCommandeForm.get("city"),
+            address: maCommandeForm.get("address"),
+            email: maCommandeForm.get("email"),
+        }
+        const myCart = { contact, products };
+        console.log("myCart", myCart);
+        envoieDonnee("http://localhost:3000/api/teddies/order", myCart)
     }
-    const myCart = { contact, products };
-    console.log("myCart", myCart);
-    envoieDonnee("http://localhost:3000/api/teddies/order", myCart)
 
 });
 

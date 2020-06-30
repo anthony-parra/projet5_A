@@ -43,21 +43,21 @@
         <div class="nom__prenom">
             <p>
                 <label for="lastName">Votre nom</label><br>
-                <input type="text" name="lastName" id="lastName" required size="20px" pattern="[A-Z]{1}[a-z]{2,15}" placeholder="Dupont" title="Veuillez mettre la première lettre en majuscule.">
+                <input type="text" name="lastName" id="lastName" required size="20px" placeholder="Dupont" title="Veuillez mettre la première lettre en majuscule.">
             </p>
             <p>
                 <label for="firstName">Votre prénom</label><br>
-                <input type="text" name="firstName" id="firstName" required size="20px" pattern="[A-Z]{1}[a-z]{2,15}" placeholder="Bernard" title="Veuillez mettre la première lettre en majuscule.">
+                <input type="text" name="firstName" id="firstName" required size="20px" placeholder="Bernard" title="Veuillez mettre la première lettre en majuscule.">
             </p>
         </div>
         <div class="adresse__ville">
             <p>
                 <label for="address">Votre adresse postale</label><br>
-                <input type="text" name="address" id="address" required size="20px" placeholder="12 rue de la mouette" pattern="\d{1,4}\s\w.{1,20}" title="Veuillez suivre le format indiqué.">
+                <input type="text" name="address" id="address" required size="20px" placeholder="12 rue de la mouette" title="Veuillez suivre le format indiqué.">
             </p>
             <p>
-                <label for="city">Votre ville, CP</label><br>
-                <input type="text" name="city" id="city" required size="20px" placeholder="17000 La Rochelle" pattern="[0-9]{5}\s\w.{2,10}" title="Veuillez suivre le format indiqué.">
+                <label for="city">CP et votre ville</label><br>
+                <input type="text" name="city" id="city" required size="20px" placeholder="17000 La Rochelle" title="Veuillez suivre le format indiqué.">
             </p>
         </div>
         <div class="adresse__mail--bouton">
