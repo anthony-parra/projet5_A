@@ -25,7 +25,7 @@ result('http://localhost:3000/api/teddies' + '/' + teddyId).then(teddy => {
 
 
     titre.innerHTML = `Amusez-vous et personnalisez ${teddy.name} !`;
-    image.innerHTML = `<img src="${teddy.imageUrl}" alt="Photo de ${teddy.name} ">`;
+    image.innerHTML = `<img id="image_products" src="${teddy.imageUrl}" alt="Photo de ${teddy.name} ">`;
 
     colors = teddy.colors
     colorInside = document.getElementById('colorInside')
