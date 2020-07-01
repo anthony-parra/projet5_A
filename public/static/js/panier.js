@@ -75,35 +75,50 @@ if (storageCart != null) {
         totalPrice.innerHTML = `<div id="blocPrixTotal"><p id="titrePrixTotal">Prix Total de votre panier<p><p id='totalPanier'>${somme} €</p></div>`;
 
 
+
     }
 }
+let btnValidation = document.getElementById('bouton__validation');
+btnValidation.addEventListener('click', () => {
 
+    if (productsLists <= productsLists.length) {
+        alert('Votre panier est vide, une chose à la fois !');
 
-document.getElementById('formulaire').addEventListener('submit', (event) => {
-    event.preventDefault();
-    let products = [];
-    for (let i = 0; i < productsLists.length; i++) {
-        let productId = productsLists[i].productId;
-        products.push(productId);
+    } else {
+        document.getElementById('formulaire').addEventListener('submit', (event) => {
+            event.preventDefault();
+            let products = [];
+
+            for (let i = 0; i < productsLists.length; i++) {
+                let productId = productsLists[i].productId;
+                products.push(productId);
+            }
+            let maCommandeForm = new FormData(document.getElementById('formulaire'));
+            let nameFormat = new RegExp(/^[A-Za-z àèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇßØøÅåÆæœ \s]{1,}/);
+            let addressFormat = new RegExp(/[A-Za-z0-9\s]{5,}/);
+            let cityFormat = new RegExp(/[0-9]{5}\s[A-Za-z\s]{2,}/);
+
+            if (nameFormat.test(maCommandeForm.get("firstName")) && nameFormat.test(maCommandeForm.get('lastName')) && addressFormat.test(maCommandeForm.get('address')) && cityFormat.test(maCommandeForm.get('city'))) {
+                let contact = {
+                    firstName: maCommandeForm.get("firstName"),
+                    lastName: maCommandeForm.get("lastName"),
+                    city: maCommandeForm.get("city"),
+                    address: maCommandeForm.get("address"),
+                    email: maCommandeForm.get("email"),
+                }
+                const myCart = { contact, products };
+                console.log("myCart", myCart);
+                envoieDonnee("http://localhost:3000/api/teddies/order", myCart)
+
+            } else {
+                alert('Le format demandé n\'a pas été respecté, veuillez vérifier votre format d\'écriture');
+            }
+
+        });
     }
-    let maCommandeForm = new FormData(document.getElementById('formulaire'));
-    let nameFormat = new RegExp(/^[A-Za-z àèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇßØøÅåÆæœ \s]{1,}/);
-    let addressFormat = new RegExp(/[A-Za-z0-9\s]{5,}/);
-    let cityFormat = new RegExp(/[0-9]{5}\s[A-Za-z\s]{2,}/);
-    if (nameFormat.test(maCommandeForm.get("firstName")) && nameFormat.test(maCommandeForm.get('lastName')) && addressFormat.test(maCommandeForm.get('address')) && cityFormat.test(maCommandeForm.get('city'))) {
-        let contact = {
-            firstName: maCommandeForm.get("firstName"),
-            lastName: maCommandeForm.get("lastName"),
-            city: maCommandeForm.get("city"),
-            address: maCommandeForm.get("address"),
-            email: maCommandeForm.get("email"),
-        }
-        const myCart = { contact, products };
-        console.log("myCart", myCart);
-        envoieDonnee("http://localhost:3000/api/teddies/order", myCart)
-    }
-
 });
+
+
 
 async function envoieDonnee(url, order) {
 
