@@ -1,6 +1,7 @@
 const storageCart = localStorage.getItem('cart');
 const productsLists = JSON.parse(storageCart);
 const panierTableau = document.getElementById('panier__body');
+const totalPrice = document.getElementById('prix__total');
 let somme = 0;
 
 
@@ -26,8 +27,6 @@ if (storageCart != null) {
         colonneTableau3.innerHTML += (productsLists[i].productColor);
 
         let colonneTableau4 = ligneTableau.insertCell(3);
-
-
 
         let buttonMinus = document.createElement('button');
         buttonMinus.innerHTML = `<i class = "fas fa-minus"></i>`;
@@ -71,20 +70,21 @@ if (storageCart != null) {
             document.location.reload()
         });
 
-        const totalPrice = document.getElementById('prix__total');
-        totalPrice.innerHTML = `<div id="blocPrixTotal"><p id="titrePrixTotal">Prix Total de votre panier<p><p id='totalPanier'>${somme} €</p></div>`;
-
-
-
     }
 }
+totalPrice.innerHTML = `<div id="blocPrixTotal"><p id="titrePrixTotal">Prix Total de votre panier<p id='totalPanier'><span>${somme}</span> €</div>`;
+
+
 let btnValidation = document.getElementById('bouton__validation');
-btnValidation.addEventListener('click', () => {
 
-    if (productsLists <= productsLists.length) {
-        alert('Votre panier est vide, une chose à la fois !');
+if (storageCart.length === 2 || somme === 0) {
 
-    } else {
+    let blocageFormulaire = document.getElementById('bouton__validation');
+    blocageFormulaire.setAttribute('disabled', "");
+
+} else {
+    btnValidation.addEventListener('click', () => {
+
         document.getElementById('formulaire').addEventListener('submit', (event) => {
             event.preventDefault();
             let products = [];
@@ -96,7 +96,7 @@ btnValidation.addEventListener('click', () => {
             let maCommandeForm = new FormData(document.getElementById('formulaire'));
             let nameFormat = new RegExp(/^[A-Za-z àèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇßØøÅåÆæœ \s]{1,}/);
             let addressFormat = new RegExp(/[A-Za-z0-9\s]{5,}/);
-            let cityFormat = new RegExp(/[0-9]{5}\s[A-Za-z\s]{2,}/);
+            let cityFormat = new RegExp(/[0-9]{5}[A-Za-z\s]{2,}/);
 
             if (nameFormat.test(maCommandeForm.get("firstName")) && nameFormat.test(maCommandeForm.get('lastName')) && addressFormat.test(maCommandeForm.get('address')) && cityFormat.test(maCommandeForm.get('city'))) {
                 let contact = {
@@ -109,16 +109,10 @@ btnValidation.addEventListener('click', () => {
                 const myCart = { contact, products };
                 console.log("myCart", myCart);
                 envoieDonnee("http://localhost:3000/api/teddies/order", myCart)
-
-            } else {
-                alert('Le format demandé n\'a pas été respecté, veuillez vérifier votre format d\'écriture');
             }
-
         });
-    }
-});
-
-
+    });
+}
 
 async function envoieDonnee(url, order) {
 
@@ -141,7 +135,6 @@ async function envoieDonnee(url, order) {
             console.error("Erreur au niveau des données dans la requête order", error);
         });
 }
-
 
 
 function updateQte(eltId, action) {
@@ -168,7 +161,7 @@ function updateQte(eltId, action) {
     productsLists[eltId].productQuantity = nvelleQte;
     qteElt.textContent = nvelleQte;
     totalElt.textContent = `${resultPrice} €`;
-    totalPanier.textContent = newTotal;
+    totalPanier.textContent = `${newTotal}`;
     localStorage.setItem('cart', JSON.stringify(productsLists));
     console.log(productsLists[eltId].productQuantity);
 }

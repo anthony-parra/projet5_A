@@ -43,21 +43,21 @@
         <div class="nom__prenom">
             <p>
                 <label for="lastName">Votre nom</label><br>
-                <input type="text" name="lastName" id="lastName" required size="20px" placeholder="Dupont" title="Format : dupont">
+                <input type="text" name="lastName" id="lastName" required size="20px" pattern="[A-Za-z àèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇßØøÅåÆæœ \s]{1,}" placeholder="Dupont" title="Format : dupont">
             </p>
             <p>
                 <label for="firstName">Votre prénom</label><br>
-                <input type="text" name="firstName" id="firstName" required size="20px" placeholder="Bernard" title="Format : bernard">
+                <input type="text" name="firstName" id="firstName" required size="20px" pattern="[A-Za-z àèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇßØøÅåÆæœ \s]{1,}" placeholder="Bernard" title="Format : bernard">
             </p>
         </div>
         <div class="adresse__ville">
             <p>
                 <label for="address">Votre adresse postale</label><br>
-                <input type="text" name="address" id="address" required size="20px" placeholder="12 rue de la mouette" title="Format : 12 rue de la mouette">
+                <input type="text" name="address" id="address" required size="20px" pattern="[A-Za-z0-9\s]{5,}" placeholder="12 rue de la mouette" title="Format : 12 rue de la mouette">
             </p>
             <p>
                 <label for="city">CP et votre ville</label><br>
-                <input type="text" name="city" id="city" required size="20px" placeholder="17000 La Rochelle" title="Format : 17000 La Rochelle">
+                <input type="text" name="city" id="city" required size="20px" pattern="[0-9]{5}[A-Za-z\s]{2,}" placeholder="17000 La Rochelle" title="Format : 17000 La Rochelle">
             </p>
         </div>
         <div class="adresse__mail--bouton">
